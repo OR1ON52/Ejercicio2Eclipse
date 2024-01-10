@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 public class ejercicioGit2 {
 
 	
-	public static boolean passwordVerifier(String a, String b) {
+	public static boolean passwordVerifier(int a, int b) {
 		if (a==b) {
 			return true;
 		} else {
@@ -14,31 +14,30 @@ public class ejercicioGit2 {
 		}
 	}
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String[] cuenta = new String[8];
+		BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+		String[] DNI = new String[4];
+		int[] password = new int[4];
+		int numCuentas =0;
 		int start=0;
 		String starter;
-		String passworder;
-		int password;
+		String wordle;
 		
-		System.out.println("Para crear una nueva cuenta, pulse 1, para acceder a su cuenta, pulse 2");
-		while (start!=1 || start!=2) {
-	    starter = br.readLine();
-		start=Integer.parseInt(starter);
+		System.out.println("Para registrar una nueva cuenta, pulse 1, para acceder a su cuenta pulse 2.");
+		starter=lector.readLine();
+		start = Integer.parseInt(starter);
 		
-        if(start==1) {
-        	System.out.println("Registrese con su DNI y contraseña");
-        	System.out.print("DNI: ");
-        	String DNI=br.readLine();
-        	System.out.println("Contraseña: ");
-        	passworder = br.readLine();
-        	password=Integer.parseInt(passworder);
-        } else if(start==2) {
-        	System.out.println("Introduzca su DNI y contraseña");
-        } else {
-        	System.out.println("Caracteres no validos");
-        }
-	}
+		if(start==1) {
+			if(numCuentas>=4) {
+				System.out.println("Numero máximo de cuentas registradas");
+			} else {
+			numCuentas++;
+			System.out.println("Introduce tu DNI y una contraseña de 4 dígitos:");
+			System.out.print("DNI:");
+			DNI[numCuentas]=lector.readLine();
+			System.out.print("Pin de 4 dígitos:");
+			wordle = lector.readLine();
+			password[numCuentas]= Integer.parseInt(wordle);
+			}
+		}
 	}
 }
